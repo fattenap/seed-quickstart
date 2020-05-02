@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --env.bundle=seed --mode development",
-    "build": "webpack --env.bundle=seed --mode production",
-    "start:dev": "webpack-dev-server --env.bundle=seed --mode development"
+    "dev": "webpack --env.bundle=dev-bundle --mode development",
+    "build": "webpack --env.bundle=bundle --mode production",
+    "start:dev": "webpack-dev-server --env.bundle=dev-bundle --mode development"
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.1.0",
