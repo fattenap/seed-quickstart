@@ -1,8 +1,8 @@
 # Seed project Template with Webpack and Wasm-pack
 
-Set up a basic [Seed](https://seed-rs.org/) web application project, using webpack and wasm pack, with hot reload.
+Start a basic [Seed](https://seed-rs.org/) web application project, using webpack, wasm pack and auto-reload.
 
-### Set up
+### Set-up
 
 The easiest way to use this template is to `degit` it. This will de-git your project, so that you can set up your project without needing to delete this projects .git settings. _(Refer to the [degit package](https://www.npmjs.com/package/degit) for more options and to learn more.)_
 
