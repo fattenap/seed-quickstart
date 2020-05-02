@@ -1,0 +1,43 @@
+[env]
+# all workspace members can use this Makefile
+CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = "true"
+
+# ---- LINT ----
+
+[tasks.clippy]
+description = "Lint with Clippy"
+clear = true
+workspace = false
+install_crate = { rustup_component_name = "clippy", binary = "cargo-clippy", test_arg = "--help" }
+command = "cargo"
+args = ["clippy", "--all-features", "--", "--deny", "warnings", "--deny", "clippy::pedantic", "--deny", "clippy::nursery"]
+
+[tasks.fmt]
+description = "Format with rustfmt"
+workspace = false
+dependencies = ["fmt"]
+
+# ---- TEST ----
+
+[tasks.test]
+description = "Run tests. Ex: 'cargo make test firefox'. Test envs: [chrome, firefox, safari]"
+clear = true
+workspace = false
+install_crate = { crate_name = "wasm-pack", binary = "wasm-pack", test_arg = "-V", min_version = "0.8.0" }
+command = "wasm-pack"
+args = ["test", "--${@}"]
+
+[tasks.test_release]
+extend = "test"
+description = "Run tests in release mode. Ex: 'cargo make test firefox'. Test envs: [chrome, firefox, safari]"
+args = ["test", "--${@}", "--release"]
+
+[tasks.test_h]
+description = "Run headless tests. Ex: 'cargo make test_h firefox'. Test envs: [chrome, firefox, safari]"
+extend = "test"
+args = ["test", "--headless", "--${@}"]
+
+[tasks.test_h_release]
+extend = "test_h"
+description = "Run headless tests in release mode. Ex: 'cargo make test_h firefox'. Test envs: [chrome, firefox, safari]"
+args = ["test", "--headless", "--${@}", "--release"]
