@@ -42,7 +42,7 @@ Then hit [http://localhost:8080/](http://localhost:8080/). Open your IDE of choi
 
 Your code will recompile and refresh the browser on save.
 
-### Things that you need to know
+### Things you need to know
 - To change the output bundle name, update the package.json file, replacing `seed` with whatever you want the bundle to be called.
 - The index.html file is a template, see `HtmlWebpackPlugin` in webpack.config.js
 - The static directory and all the assets, will be copied to the `dist` folder during build.
