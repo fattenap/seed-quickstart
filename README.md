@@ -50,7 +50,7 @@ _OR_
 
 `yarn build`
 
-This will run a release build. The artifacts will be copied to a `dist` folder, for you to deploy to your server.
+This will run a release build. The artifacts will be copied to a `dist` folder for you to deploy to your server.
 
 ### Things you need to know
 - To change the output bundle name, update the package.json file, replacing `bundle` and `dev-bundle` with a name you want.
