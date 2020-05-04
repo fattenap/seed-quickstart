@@ -23,7 +23,7 @@ pub fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
   }
 }
 
-pub fn view(model: &Model) -> impl View<Msg> {
+pub fn view(model: &Model) -> Node<Msg> {
   button![
       simple_ev(Ev::Click, Msg::Increment),
       format!("Hello World × {}", model.val)
