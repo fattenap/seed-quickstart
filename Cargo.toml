@@ -29,7 +29,7 @@ futures = "^0.3.4"
 wasm-bindgen-test = "0.3.12" # NOTE: keep in sync with wasm-bindgen version
 
 [build-dependencies]
-failure = "0.1.7"
+failure = "0.1.8"
 sass-rs = "0.2.2"
 
 # https://doc.rust-lang.org/cargo/reference/profiles.html
