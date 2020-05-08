@@ -11,4 +11,4 @@ node_modules
 dist
 .vscode
 .DS_Store
-/static/styles.css
+/static/css/styles.css
