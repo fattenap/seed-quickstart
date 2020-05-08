@@ -1,5 +1,3 @@
-mod utils;
-
 use seed::{*, prelude::*};
 
 #[cfg(feature = "wee_alloc")]
@@ -38,7 +36,6 @@ fn view(model: &Model) -> Node<Msg> {
 
 #[wasm_bindgen(start)]
 pub fn start() {
-    utils::set_panic_hook();
     App::builder(update, view)
         .build_and_start();
 }
