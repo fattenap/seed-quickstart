@@ -19,11 +19,17 @@ module.exports = (env, argv) => {
       webassemblyModuleFilename: `${bundle}.wasm`,
     },
     plugins: [
-      new CopyWebpackPlugin([{ from: "./static", to: distPath }]),
+      new CopyWebpackPlugin(
+        [
+          {
+            from: "static",
+          },
+        ],
+        { ignore: "static/css/**/*.css" }
+      ),
       new WasmPackPlugin({
         crateDirectory: __dirname,
         extraArgs: "--no-typescript",
-        watchDirectories: [path.resolve(__dirname, "styles")],
       }),
       new HtmlWebpackPlugin({
         title: "Seed App",

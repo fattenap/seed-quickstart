@@ -10,5 +10,5 @@ wasm-pack.log
 node_modules
 dist
 .vscode
-yarn.lock
 .DS_Store
+/styles/styles.css

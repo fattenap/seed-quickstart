@@ -3,13 +3,29 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --env.bundle=dev-bundle --mode development",
-    "build": "webpack --env.bundle=bundle --mode production",
-    "start:dev": "webpack-dev-server --env.bundle=dev-bundle --mode development"
+    "build": "export NODE_ENV=production && npm run build:styles && webpack --env.bundle=bundle --mode production",
+    "start:dev": "webpack-dev-server --env.bundle=dev-bundle --mode development",
+    "build:styles": "postcss styles/**/*.css -o dist/css/styles.css",
+    "process:styles": "postcss styles/**/*.css -o static/css/styles.css",
+    "watch:styles": "npm-watch"
+  },
+  "watch": {
+    "process:styles": {
+      "patterns": [
+        "styles"
+      ],
+      "extensions": "js,css"
+    }
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.1.0",
     "copy-webpack-plugin": "^5.1.1",
+    "cssnano": "^4.1.10",
     "html-webpack-plugin": "^4.3.0",
+    "npm-watch": "^0.6.0",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.4.5",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
