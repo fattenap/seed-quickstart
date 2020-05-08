@@ -1,4 +1,6 @@
-# Seed project Template with Webpack and Wasm-pack
+# Seed project Template with Webpack and Wasm-pack 
+
+#### _Warning!! (CSS processing in this project is experimental - use at own risk)_
 
 Start a basic [Seed](https://seed-rs.org/) web application project, using webpack, wasm pack, tailwindcss and auto-reload.
 
