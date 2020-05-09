@@ -4,7 +4,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --env.bundle=dev-bundle --mode development",
     "build": "export NODE_ENV=production && npm run build:styles && webpack --env.bundle=bundle --mode production",
-    "start:dev": "webpack-dev-server --env.bundle=dev-bundle --mode development",
+    "start:dev": "npm run process:styles && webpack-dev-server --env.bundle=dev-bundle --mode development",
     "build:styles": "postcss styles/**/*.css -o dist/css/styles.css",
     "process:styles": "postcss styles/**/*.css -o static/css/styles.css",
     "watch:styles": "npm-watch"
