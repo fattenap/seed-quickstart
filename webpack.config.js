@@ -25,11 +25,12 @@ module.exports = (env, argv) => {
             from: "static",
           },
         ],
-        { ignore: "static/css/**/*.css" }
+        { ignore: argv.mode !== "production" ? "" : "static/css/**/*.css" }
       ),
       new WasmPackPlugin({
         crateDirectory: __dirname,
         extraArgs: "--no-typescript",
+        watchDirectories: [path.resolve(__dirname, "static")],
       }),
       new HtmlWebpackPlugin({
         title: "Seed App",
