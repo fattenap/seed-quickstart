@@ -1,4 +1,4 @@
-# Seed project Template with Webpack and Wasm-pack 
+# Seed project Template with Webpack and Wasm-pack [Unofficial]
 
 #### _Warning!! (CSS processing in this Rust wasm project is experimental - use at own risk)_
 
@@ -41,4 +41,5 @@ The build process will scan your source files for references to tailwind class n
 - To change the output bundle name, update the package.json file, replacing `bundle` and `dev-bundle` with a name you want.
 - The index.html file is a template, see `HtmlWebpackPlugin` in webpack.config.js
 - The static directory and all the assets, will be copied to the `dist` folder during build.
-- `npm run process:styles` will generate the css files and place it in the `static/css` directory. `npm run watch:styles` does the same thing, but also watches for changes and will re-run process:styles.
+- `npm run process:styles` will generate `styles.css` and place it in the `static/css` directory. Currently, all other css files need to be imported into `styles/styles.css`. `npm run watch:styles` does the same thing, but also watches for changes and will re-run `process:styles`.
+- _VS Code tip_: To remove the css linting errors install the [PostCSS Language Support](https://marketplace.visualstudio.com/items?itemName=csstools.postcss) support extension.

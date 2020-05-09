@@ -44,7 +44,6 @@ module.exports = (env, argv) => {
       new WasmPackPlugin({
         crateDirectory: __dirname,
         args: "--log-level warn",
-        watchDirectories: [path.resolve(__dirname, "static")],
       }),
       new HtmlWebpackPlugin({
         title: "Seed App",
@@ -56,7 +55,6 @@ module.exports = (env, argv) => {
         },
         favicon: "static/favicon.ico",
       }),
-    ],
-    watch: argv.mode !== "production",
+    ]
   };
 };

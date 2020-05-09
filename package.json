@@ -4,15 +4,25 @@
     "test": "cargo test && wasm-pack test --headless",
     "build": "rimraf dist pkg && npm run build:styles && webpack --env.bundle=bundle --mode production",
     "start:dev": "rimraf dist pkg && npm run process:styles && webpack-dev-server --env.bundle=dev-bundle --mode development",
-    "build:styles": "export NODE_ENV=production && postcss styles/**/*.css -d dist/css",
-    "process:styles": "postcss styles/**/*.css -d static/css",
-    "watch:styles": "postcss styles/**/*.css -w -d static/css --verbose"
+    "build:styles": "cross-env NODE_ENV=production postcss styles/styles.css -o dist/css/styles.css",
+    "process:styles": "rimraf static/css && postcss styles/styles.css -o static/css/styles.css --verbose",
+    "watch:styles": "npm-watch"
+  },
+  "watch": {
+    "process:styles": {
+      "patterns": [
+        "styles"
+      ],
+      "extensions": "js,css"
+    }
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.1.0",
     "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
     "html-webpack-plugin": "^4.3.0",
+    "npm-watch": "^0.6.0",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
     "rimraf": "^3.0.2",
