@@ -1,32 +1,17 @@
 # Seed project Template with Webpack and Wasm-pack 
 
-#### _Warning!! (CSS processing in this project is experimental - use at own risk)_
+#### _Warning!! (CSS processing in this Rust wasm project is experimental - use at own risk)_
 
 Start a basic [Seed](https://seed-rs.org/) web application project, using webpack, wasm pack, tailwindcss and auto-reload.
 
-### Set-up
+### Set-up project
 
-Global install [degit](https://www.npmjs.com/package/degit) and [postcss-cli](https://www.npmjs.com/package/postcss-cli).
+Either press the `Use this template` button above and then clone it or clone this repo directly. 
 
-_N.B. Replace `seed_app` with your new project's name._
-
-```
-npm install -g degit postcss-cli
-degit fattenap/seed-quickstart seed_app
-cd seed_app
-```
-
-From within the project directory install the packages.
+Once cloned, enter the project root directory, install the packages and start the local webserver. 
 
 ```
 npm install
-```
-
-### Start Coding
-
-Start the local webserver 
-
-```
 npm run start:dev
 ```
 
@@ -34,15 +19,15 @@ Hit [http://localhost:8080/](http://localhost:8080/). Open your IDE of choice an
 
 ### Working with Styles
 
-When working with css and styling you should run 
+When working with css and styling you should run watch:styles as a separate process.
 
 ```
 npm run watch:styles
 ```
 
-whenever changes are saved to files within the `styles` directory, a process will run that updates the styles, which are then reflected in the browser. Ensure you are running the dev server to see the changes. (`npm run start:dev` )
+Whenever changes are saved to files within the `styles` directory, a process will run that updates the styles, which are then reflected in the browser. Ensure you are running the dev server to see the changes. (`npm run start:dev` )
 
-Please review [tailwindcss](https://tailwindcss.com/) and [postcss](https://postcss.org/) to see how to configure and update css proceessing, styles and themes
+Please review [tailwindcss](https://tailwindcss.com/) and [postcss](https://postcss.org/) to see how to configure and update css proceessing, styles and themes.
 
 ### Building the project
 
