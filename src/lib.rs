@@ -23,16 +23,7 @@ fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
 
 fn view(model: &Model) -> Node<Msg> {
   button![
-    class![
-      "bg-blue-500",
-      "hover:bg-blue-700",
-      "text-white",
-      "font-bold",
-      "py-2",
-      "px-4",
-      "rounded",
-      "m-4"
-    ],
+    class!["btn btn-blue", "m-4"],
     simple_ev(Ev::Click, Msg::Increment),
     format!("Hello World × {}", model)
   ]
