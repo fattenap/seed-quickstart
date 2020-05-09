@@ -1,20 +1,14 @@
-use seed::{*, prelude::*};
+use seed::{prelude::*, *};
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-struct Model {
-  pub val: i32,
+fn init(_: Url, _: &mut impl Orders<Msg>) -> Model {
+  Model::default()
 }
 
-impl Default for Model {
-  fn default() -> Self {
-      Self {
-          val: 0,
-      }
-  }
-}
+type Model = i32;
 
 #[derive(Clone)]
 enum Msg {
@@ -23,29 +17,28 @@ enum Msg {
 
 fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
   match msg {
-      Msg::Increment => model.val += 1,
+    Msg::Increment => *model += 1,
   }
 }
 
 fn view(model: &Model) -> Node<Msg> {
   button![
     class![
-        "bg-blue-500",
-        "hover:bg-blue-700",
-        "text-white",
-        "font-bold",
-        "py-2",
-        "px-4",
-        "rounded",
-        "m-4"
-      ],
-      simple_ev(Ev::Click, Msg::Increment),
-      format!("Hello World × {}", model.val)
+      "bg-blue-500",
+      "hover:bg-blue-700",
+      "text-white",
+      "font-bold",
+      "py-2",
+      "px-4",
+      "rounded",
+      "m-4"
+    ],
+    simple_ev(Ev::Click, Msg::Increment),
+    format!("Hello World × {}", model)
   ]
 }
 
 #[wasm_bindgen(start)]
-pub fn start() {
-    App::builder(update, view)
-        .build_and_start();
+pub fn run() {
+  App::start("root", init, update, view);
 }

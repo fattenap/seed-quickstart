@@ -3,6 +3,7 @@ const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const distPath = path.resolve(__dirname, "dist");
+const webpack = require('webpack');
 
 module.exports = (env, argv) => {
   const { bundle } = env;
@@ -18,7 +19,20 @@ module.exports = (env, argv) => {
       filename: `${bundle}.js`,
       webassemblyModuleFilename: `${bundle}.wasm`,
     },
+    resolve: {
+      alias: {
+        wasm_mod: path.resolve(__dirname, 'pkg/index.js'),
+      }
+    },
     plugins: [
+      // remove webpack err -> critical: 'the request of a dependency is an expression'
+      new webpack.ContextReplacementPlugin(
+        /\/pkg$/,
+        (data) => {
+          delete data.dependencies[0].critical;
+          return data;
+        },
+      ),
       new CopyWebpackPlugin(
         [
           {
@@ -29,7 +43,7 @@ module.exports = (env, argv) => {
       ),
       new WasmPackPlugin({
         crateDirectory: __dirname,
-        extraArgs: "--no-typescript",
+        args: "--log-level warn",
         watchDirectories: [path.resolve(__dirname, "static")],
       }),
       new HtmlWebpackPlugin({
